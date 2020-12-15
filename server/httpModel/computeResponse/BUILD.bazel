@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_embed_data", "go_library")
+
+genrule(
+    name = "schema",
+    srcs = ["schema.json"],
+    outs = ["schema.go"],
+    cmd = "$(location //:jss2go) -i $< -o $@ -p computeResponse",
+    tools = ["//:jss2go"],
+)
+
+go_library(
+    name = "computeResponse",
+    srcs = [
+        "assets",  # keep
+        "schema.go",
+    ],
+    importpath = "github.com/lazdmx/gobazel/server/httpModel/computeResponse",
+    visibility = ["//visibility:public"],
+)
+
+go_embed_data(
+    name = "assets",
+    src = "schema.json",
+    var = "JSONSchema",
+)

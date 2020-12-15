@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "T",
+    "type": "object",
+    "properties": {
+        "Error": {
+            "type": "string",
+            "enum": [
+                "bad_request"
+            ]
+        },
+        "Data": {
+            "$ref": "#/definitions/data"
+        }
+    },
+    "definitions": {
+        "data": {
+            "type": "number"
+        }
+    }
+}

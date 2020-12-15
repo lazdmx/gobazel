@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "T",
+    "type": "object",
+    "properties": {
+        "Op": {
+            "type": "string",
+            "enum": [
+                "add",
+                "sub"
+            ]
+        },
+        "Lh": {
+            "type": "number"
+        },
+        "Rh": {
+            "type": "number"
+        }
+    }
+}

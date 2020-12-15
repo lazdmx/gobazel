@@ -1,0 +1,12 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+gazelle(
+    name = "gazelle",
+    prefix = "github.com/lazdmx/gobazel",
+)
+
+alias(
+    name = "jss2go",
+    actual = "@com_github_a-h_generate//cmd/schema-generate",
+    visibility = ["//visibility:public"],
+)

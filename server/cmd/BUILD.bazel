@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "cmd_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/lazdmx/gobazel/server/cmd",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//server/httpModel/computeRequest",
+        "//server/httpModel/computeResponse",
+        "@com_github_julienschmidt_httprouter//:go_default_library",
+        "@com_github_xeipuuv_gojsonschema//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "cmd",
+    embed = [":cmd_lib"],
+    visibility = ["//visibility:public"],
+)
